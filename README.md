@@ -1,8 +1,12 @@
 # wps-img-fixer
 
-修复 **WPS 单元格内嵌图片在 Excel 中不显示、只剩一串代码** 的问题。
+> 🟢 **直接使用**：在线打开 👉 **[wps_img_fixer.html（点击运行）](https://gtx950l.github.io/wps-img-fixer/wps_img_fixer.html)** —— 拖入文件即可修复，**无需安装、无需联网、数据不出本机**。
+>
+> 也有 [Python 命令行版](#python-命令行版) 可批量处理。
+>
+> 🔗 项目仓库：[github.com/GTX950L/wps-img-fixer](https://github.com/GTX950L/wps-img-fixer)
 
-> 包名/命令为 `wps_dispimg_fixer`（Python 模块名），仓库名 `wps-img-fixer`。
+修复 **WPS 单元格内嵌图片在 Excel 中不显示、只剩一串代码** 的问题。
 
 ## 问题是什么
 
@@ -41,26 +45,38 @@ H2: =_xlfn.DISPIMG("ID_62B52A37D6BA44EC970C96E11457D488",1)   ← 一串代码
 H2: (空, 图片显示在 H 列单元格位置)
 ```
 
-## 使用方法
+## 两种使用方式
 
-### 环境要求
+### 1. 在线 HTML 版（推荐）
 
-- Python 3.8+
-- **零第三方依赖**（只用标准库）
+直接打开 **[wps_img_fixer.html](https://gtx950l.github.io/wps-img-fixer/wps_img_fixer.html)**：
 
-### 命令行
+- **纯单文件 HTML**，JSZip 内嵌，**完全离线可用**（断网也行）
+- 拖入或选择 .xlsx → 自动检测 WPS DISPIMG → 一键修复 → 下载结果
+- 全部在浏览器内完成，**文件不上传任何服务器**
+- 内置演示文件可一键体验
+- 也可下载 `wps_img_fixer.html` 到本地双击用浏览器打开
+
+页面支持两个选项：
+
+| 选项 | 说明 |
+| --- | --- |
+| 图片尺寸模式 · `keep` | **默认**。保留 WPS 中图片的原始显示尺寸（最忠实） |
+| 图片尺寸模式 · `cell` | 按所在单元格行高缩放，更贴合表格（适合行高已设置好的表） |
+| 保留 cellimages.xml | 一般不勾——保留 WPS 私有部件可能让 Excel 误读 |
+
+### 2. Python 命令行版
+
+环境要求：Python 3.8+，**零第三方依赖**（只用标准库）。
 
 ```bash
-# 修复单个文件, 输出为 xxx_fixed.xlsx
+# 修复单个文件
 python -m wps_dispimg_fixer 报告.xlsx
-
-# 指定输出文件名
-python -m wps_dispimg_fixer 报告.xlsx -o 修复后.xlsx
 
 # 批量修复文件夹下所有 xlsx
 python -m wps_dispimg_fixer 数据文件夹/
 
-# 只检测, 不生成文件 (先看看有没有问题)
+# 只检测, 不生成文件
 python -m wps_dispimg_fixer 报告.xlsx --check
 ```
 
@@ -123,16 +139,18 @@ xl/media/image1.png                      xl/media/image1.png
 ## 项目结构
 
 ```
-wps-dispimg-fixer/
-├── wps_dispimg_fixer/          # 主包
-│   ├── cli.py                  # 命令行入口
-│   ├── converter.py            # 核心转换逻辑
-│   └── image_utils.py          # 图片尺寸解析 (JPEG/PNG/GIF/BMP)
+wps-img-fixer/
+├── wps_img_fixer.html           # ⭐ 浏览器版（单文件，JSZip 内嵌）
+├── .nojekyll                    # GitHub Pages 部署 (避免 Jekyll 过滤)
+├── wps_dispimg_fixer/           # Python 版主包
+│   ├── cli.py                   # 命令行入口
+│   ├── converter.py             # 核心转换逻辑
+│   └── image_utils.py           # 图片尺寸解析 (JPEG/PNG/GIF/BMP)
 ├── tests/
-│   ├── sample_factory.py       # 测试样本生成 (纯标准库, 可公开)
-│   └── test_converter.py       # 单元测试 (15 个用例)
+│   ├── sample_factory.py        # 测试样本生成 (纯标准库, 可公开)
+│   └── test_converter.py        # 单元测试 (15 个用例)
 ├── scripts/
-│   └── make_test_sample.py     # 生成演示用测试样本
+│   └── make_test_sample.py      # 生成演示用测试样本
 └── README.md
 ```
 
