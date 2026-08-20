@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# 测试/演示产物
+demo_wps_dispimg.xlsx
+test_sample_wps.xlsx
+*.fixed.xlsx
+*_fixed.xlsx
+out_test/
+
+# 编辑器/系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
