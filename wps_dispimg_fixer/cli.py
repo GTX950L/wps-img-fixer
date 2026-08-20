@@ -57,7 +57,7 @@ def main(argv=None) -> int:
                         help="图片尺寸模式: cell=按所在行高缩放(默认, 贴合单元格不遮挡), "
                              "keep=保留 WPS 原始尺寸(可能溢出遮挡)")
     parser.add_argument("--keep-wps-part", action="store_true",
-                        help="保留原 cellimages.xml 文件 (默认删除, 与手工修复行为一致)")
+                        help="保留原 cellimages.xml 文件 (默认删除, 避免 Excel 误读)")
     parser.add_argument("-V", "--version", action="version", version=f"%(prog)s {__version__}")
     args = parser.parse_args(argv)
 

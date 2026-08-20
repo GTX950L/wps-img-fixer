@@ -159,7 +159,7 @@
         </select>
       </label>
     </div>
-    <div class="chk"><label><input type="checkbox" id="keepWps"> 保留原 cellimages.xml 部件（一般不需要勾）</label></div>
+    <div class="chk"><label><input type="checkbox" id="keepWps"> 保留原 cellimages.xml 文件（一般不勾）</label></div>
     <button id="btnFix" disabled>开始修复</button>
     <button class="sec" id="btnDemo">载入内置演示文件</button>
     <p class="parseinfo" id="fileInfo"></p>
@@ -191,7 +191,7 @@
           <li>扫描工作表，找到所有 <code>=DISPIMG(...)</code> 单元格及其行列位置</li>
           <li>为每张图片生成标准锚点（<code>oneCellAnchor</code>），位置对齐原单元格</li>
           <li>清空单元格里的公式（保留样式），写入 <code>&lt;drawing&gt;</code> 引用</li>
-          <li>更新关系文件与内容类型声明，删除 WPS 私有部件，重新打包</li>
+          <li>更新关系文件与内容类型声明，删除 WPS 私有的 cellimages.xml 文件，重新打包</li>
         </ol>
         <p>转换后图片在 Excel / WPS / 手机版中都能正常显示，表格数据、公式与格式完全不变。</p>
       </div>

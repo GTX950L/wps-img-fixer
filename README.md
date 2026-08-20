@@ -2,7 +2,7 @@
 
 > 🟢 **直接使用**：在线打开 👉 **[wps_img_fixer.html（点击运行）](https://gtx950l.github.io/wps-img-fixer/wps_img_fixer.html)** —— 拖入文件即可修复，**无需安装、无需联网、数据不出本机**。
 >
-> 也有 [Python 命令行版](#python-命令行版) 可批量处理。
+> 也有 [Python 命令行版](#2-python-命令行版) 可批量处理。
 >
 > 🔗 项目仓库：[github.com/GTX950L/wps-img-fixer](https://github.com/GTX950L/wps-img-fixer)
 
@@ -42,7 +42,7 @@ H2: =_xlfn.DISPIMG("ID_62B52A37D6BA44EC970C96E11457D488",1)   ← 一串代码
 转换后（Excel 打开，图片正常显示，公式已清空）：
 
 ```
-H2: (空, 图片显示在 H 列单元格位置)
+H2:（空，图片显示在 H 列单元格位置）
 ```
 
 ## 两种使用方式
@@ -63,7 +63,7 @@ H2: (空, 图片显示在 H 列单元格位置)
 | --- | --- |
 | 图片尺寸模式 · `cell` | **默认**。图片高度按所在行高、宽度按原图比例——贴合单元格、不遮挡相邻行 |
 | 图片尺寸模式 · `keep` | 保留 WPS 记录的原始尺寸（最忠实，但表格行高偏小时图片会溢出遮挡） |
-| 保留 cellimages.xml | 一般不勾——保留 WPS 私有部件可能让 Excel 误读 |
+| 保留 cellimages.xml | 一般不勾。默认删除 WPS 私有部件，避免 Excel 误读 |
 
 ### 2. Python 命令行版
 
