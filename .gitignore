@@ -1,20 +1,12 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-build/
-dist/
-.venv/
-venv/
-
 # 测试/演示产物
 demo_wps_dispimg.xlsx
 demo_tmp.xlsx
-test_sample_wps.xlsx
 *.fixed.xlsx
 *_fixed.xlsx
 out_test/
+out_verify/
 .tmp_check/
+.tmp_*.js
 
 # 编辑器/系统
 .vscode/
