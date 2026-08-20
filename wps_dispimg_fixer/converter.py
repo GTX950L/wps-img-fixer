@@ -450,10 +450,15 @@ def _existing_drawing_rels(zf: zipfile.ZipFile, sheet_file: str):
     return xml, rids, drawing_rid
 
 
-def fix_workbook(input_path: str, output_path: str = "", size_mode: str = "keep",
+def fix_workbook(input_path: str, output_path: str = "", size_mode: str = "cell",
                  keep_wps_part: bool = False, check_only: bool = False) -> FixReport:
     """修复一个 xlsx 文件。返回修复报告。
 
+    size_mode:
+      - "cell" (默认): 图片高度按所在行高, 宽度按原图比例。保证图片不遮挡相邻行,
+                       与手工修复的效果一致。
+      - "keep": 保留 WPS cellimages.xml 中记录的原始尺寸。若表格行高小于图片高度,
+                图片会溢出并遮挡其他内容 (忠实但可能不可用)。
     keep_wps_part: 是否保留原 cellimages.xml (默认删除, 与手工修复一致)。
     check_only:    只检测分析, 不写输出文件。
     """

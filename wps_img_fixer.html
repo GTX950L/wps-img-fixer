@@ -154,8 +154,8 @@
     <div class="row">
       <label>图片尺寸模式
         <select id="sizeMode">
-          <option value="keep">keep · 保留 WPS 原始尺寸（推荐）</option>
-          <option value="cell">cell · 按所在行高缩放</option>
+          <option value="cell" selected>cell · 按行高缩放，贴合单元格不遮挡（推荐）</option>
+          <option value="keep">keep · 保留 WPS 原始尺寸（图片可能溢出遮挡）</option>
         </select>
       </label>
     </div>
@@ -200,7 +200,7 @@
       <summary>❓ 常见问题</summary>
       <div class="detail-body">
         <ul>
-          <li><b>转换后图片大小和原来不一样？</b>「keep」模式保留 WPS 里的原始尺寸（默认）；「cell」模式按所在行高缩放，更贴合表格。转换后也可在 Excel 中直接拖动调整。</li>
+          <li><b>转换后图片大小和原来不一样？</b>「cell」模式（默认）按所在行高缩放，图片正好放进一行、不遮挡；「keep」模式保留 WPS 里的原始尺寸，若表格行高偏小图片会溢出遮挡，此时可改用 cell 模式，或在 Excel 中拖动调整。</li>
           <li><b>提示「N 个引用缺少对应图片」？</b> 说明某些 <code>=DISPIMG(...)</code> 引用的图片数据在文件里缺失（WPS 里可能也显示不了）。这些单元格会<b>原样保留</b>，不会误删内容。</li>
           <li><b>普通浮动图片会受影响吗？</b> 不会。只有「嵌入单元格」的图片（DISPIMG）才会被处理，普通图片、图表原样保留。</li>
           <li><b>文件会上传到服务器吗？</b> 不会。全部在浏览器本地完成，断网也能用。</li>

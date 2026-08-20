@@ -88,7 +88,7 @@ class TestFix(unittest.TestCase):
         )
 
     def test_fix_structure(self):
-        report = fix_workbook(self.wps_file, self.out_file)
+        report = fix_workbook(self.wps_file, self.out_file, size_mode="keep")
         self.assertFalse(report.errors, report.errors)
         self.assertEqual(report.fixed, 3)
         self.assertEqual(report.missing, 0)

@@ -53,9 +53,9 @@ def main(argv=None) -> int:
     parser.add_argument("input", nargs="+", help="要修复的 .xlsx 文件或包含 xlsx 的文件夹")
     parser.add_argument("--check", action="store_true", help="只检测并报告, 不生成输出文件")
     parser.add_argument("-o", "--output", help="输出文件路径 (仅单文件输入时可用)")
-    parser.add_argument("--size", choices=["keep", "cell"], default="keep",
-                        help="图片尺寸模式: keep=保留 WPS 原始显示尺寸(默认, 最忠实), "
-                             "cell=按所在行高缩放(贴合单元格, 需行高已设置)")
+    parser.add_argument("--size", choices=["cell", "keep"], default="cell",
+                        help="图片尺寸模式: cell=按所在行高缩放(默认, 贴合单元格不遮挡), "
+                             "keep=保留 WPS 原始尺寸(可能溢出遮挡)")
     parser.add_argument("--keep-wps-part", action="store_true",
                         help="保留原 cellimages.xml 文件 (默认删除, 与手工修复行为一致)")
     parser.add_argument("-V", "--version", action="version", version=f"%(prog)s {__version__}")
