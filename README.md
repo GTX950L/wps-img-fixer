@@ -1,6 +1,8 @@
-# wps-dispimg-fixer
+# wps-img-fixer
 
 修复 **WPS 单元格内嵌图片在 Excel 中不显示、只剩一串代码** 的问题。
+
+> 包名/命令为 `wps_dispimg_fixer`（Python 模块名），仓库名 `wps-img-fixer`。
 
 ## 问题是什么
 
